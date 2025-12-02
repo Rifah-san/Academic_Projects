@@ -1,21 +1,21 @@
-#include <stdio.h>
-#include <stdlib.h>
-#define MAX 100
+#include <iostream>
+using namespace std;
 
+const int MAX = 100;
 int stack[MAX];
 int top = -1;
 
-int isEmpty() {
+bool isEmpty() {
     return top == -1;
 }
 
-int isFull() {
+bool isFull() {
     return top == MAX - 1;
 }
 
 void push(int value) {
     if (isFull()) {
-        printf("Stack Overflow\n");
+        cout << "Stack Overflow\n";
         return;
     }
     stack[++top] = value;
@@ -23,7 +23,7 @@ void push(int value) {
 
 int pop() {
     if (isEmpty()) {
-        printf("Stack Underflow\n");
+        cout << "Stack Underflow\n";
         return -1;
     }
     return stack[top--];
@@ -31,7 +31,7 @@ int pop() {
 
 int peek() {
     if (isEmpty()) {
-        printf("Stack is empty\n");
+        cout << "Stack is empty\n";
         return -1;
     }
     return stack[top];
@@ -39,15 +39,15 @@ int peek() {
 
 void display() {
     if (isEmpty()) {
-        printf("Stack is empty\n");
+        cout << "Stack is empty\n";
         return;
     }
     
-    printf("Stack (top to bottom): ");
+    cout << "Stack (top to bottom): ";
     for (int i = top; i >= 0; i--) {
-        printf("%d ", stack[i]);
+        cout << stack[i] << " ";
     }
-    printf("\n");
+    cout << endl;
 }
 
 int main() {
@@ -58,10 +58,10 @@ int main() {
     
     display();
     
-    printf("Top element: %d\n", peek());
+    cout << "Top element: " << peek() << endl;
     
-    printf("Popped: %d\n", pop());
-    printf("Popped: %d\n", pop());
+    cout << "Popped: " << pop() << endl;
+    cout << "Popped: " << pop() << endl;
     
     display();
     
